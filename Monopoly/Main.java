@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
        //LER JOGADOR
-       String nome, cpf, foto, email;
+       /*String nome, cpf, foto, email;
        Scanner entrada = new Scanner(System.in);
 
        System.out.print("informe o nome: ");
@@ -17,14 +17,22 @@ public class Main {
 
        System.out.print("informe o email: ");
        email = entrada.nextLine();
+       Jogador p1 = new Jogador(nome, cpf, email, foto);*/
 
-       Jogador p1 = new Jogador(nome, cpf, email, foto);
+       Jogador jogador2 = new Jogador();
+       Peca peca1 = new Peca();
+       CartaSorte cartaSorte1 = new CartaSorte();
+       Tabuleiro tabuleiro = new Tabuleiro();
+       Propriedade propriedade1 = new Propriedade();
+       Estacao estacao1 = new Estacao();
+       ServicoPublico servicoPublico1 = new ServicoPublico();
+       Terreno terreno1 = new Terreno();
 
-       if (p1.validarCPF(p1.getCpf())){
+       if (Validacoes.validarCPF(jogador2)){
           System.out.printf("CPF válido!\n");
        }
 
-       if (p1.validarEmail(p1.getEmail())){
+       if (Validacoes.validarEmail(jogador2)){
           System.out.printf("Email válido!\n");
        }
     }
