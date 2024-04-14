@@ -7,6 +7,12 @@ public class CartaSorte {
     private String acao;
     private int tempo;
     private String restricao;
+    private static int num_cartasSorte = 0;
+
+    public CartaSorte() {
+        this.id = num_cartasSorte + 1;
+        num_cartasSorte ++;
+    }
 
     public int getId() {
         return id;

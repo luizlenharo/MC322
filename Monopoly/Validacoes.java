@@ -2,13 +2,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validacoes {
-    public static boolean validarCPF(Jogador jogador){
-        String cpf = jogador.getCpf();
+    public static boolean validarCPF(String cpf){
         String formatCPF = cpf.replaceAll("[^0-9]+", "");
 
         // VERIFICANDO SE TEM 11 DÍGITOS
         if (formatCPF.length() != 11){
-            System.out.printf("CPF inválido");
             return false;
         }
         //VERIFICANDO SE TODOS OS DÍGITOS SÃO IGUAIS
@@ -22,7 +20,6 @@ public class Validacoes {
             }
         }
         if (iguais == 10){
-            System.out.printf("CPF inválido");
             return false;
         }
         //VERIFICAR OS DÍGITOS VERIFICADORES
@@ -36,7 +33,6 @@ public class Validacoes {
             resto = 0;
         }
         if (resto != Character.getNumericValue(formatCPF.charAt(9))){
-            System.out.printf("CPF inválido");
             return false;
         } else {
             somatorio = 0;
@@ -48,7 +44,6 @@ public class Validacoes {
                 resto = 0;
             }
             if (resto != Character.getNumericValue(formatCPF.charAt(10))){
-                System.out.printf("CPF inválido");
                 return false;
             }
         }
@@ -56,8 +51,7 @@ public class Validacoes {
         return true;
     }
 
-    public static boolean validarEmail(Jogador jogador) {
-        String email = jogador.getEmail();
+    public static boolean validarEmail(String email) {
         String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
