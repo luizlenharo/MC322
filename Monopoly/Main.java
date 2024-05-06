@@ -150,10 +150,5 @@ public class Main {
        Scanner entrada = new Scanner(System.in);
 
        Menu(tabuleiro);
-
-       Terreno.getPropriedadesCor()[0][0].setDono(tabuleiro.getJogadores()[0]);
-       Terreno.getPropriedadesCor()[0][0].comprarCasa(tabuleiro.getJogadores()[0]);
-
-       CartaSorte cartaSorte1 = new CartaSorte();
     }
 }
