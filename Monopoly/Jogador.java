@@ -1,14 +1,16 @@
+import javax.management.StandardMBean;
 import java.util.Scanner;
 
 public class Jogador {
-    private int dinheiro;
-    private int id;
     public static int num_jogadores = 0;
+    private int id;
+    private int dinheiro;
     private String nome;
     private String cpf;
     private String email;
     private String foto;
-    private static Jogador[] jogadores = new Jogador[6];
+    private Carta cartas[];
+    private Peca peca;
 
     public Jogador (String nome, String cpf, String email, String foto) {
         this.id = num_jogadores + 1;
@@ -17,6 +19,8 @@ public class Jogador {
         this.cpf = cpf;
         this.email = email;
         this.foto = foto;
+        this.cartas = new Carta[30];
+        this.peca = null;
         num_jogadores ++;
     }
 
@@ -27,6 +31,8 @@ public class Jogador {
         this.cpf = "";
         this.email = "";
         this.foto = "";
+        this.cartas = new Carta[30];
+        this.peca = null;
         num_jogadores ++;
     }
 
@@ -78,12 +84,35 @@ public class Jogador {
         this.id = id;
     }
 
-    public static Jogador[] getJogadores() {
-        return jogadores;
+    public Carta[] getCartas() {
+        return cartas;
     }
 
-    public static void setJogadores(Jogador[] jogadores) {
-        Jogador.jogadores = jogadores;
+    public void setCartas(Carta[] cartas) {
+        this.cartas = cartas;
+    }
+
+    public Peca getPeca() {
+        return peca;
+    }
+
+    public void setPeca(Peca peca) {
+        this.peca = peca;
+    }
+
+    public boolean definirPeca(Peca peca) {
+        if (this.peca != null) {
+            return false;
+        }
+        for (int i = 0; i < Jogador.num_jogadores; i++) {
+            if (Tabuleiro.getJogadores()[i].getPeca() != null) {
+                if (Tabuleiro.getJogadores()[i].getPeca() == peca) {
+                    System.out.print("-> Peça já está em uso! Tente novamente\n");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public String toString() {
@@ -118,7 +147,6 @@ public class Jogador {
         foto = entrada.nextLine();
 
         Jogador jogador = new Jogador(nome, cpf, email, foto);
-        Jogador.jogadores[jogador.id - 1] = jogador;
         return jogador;
     }
 }

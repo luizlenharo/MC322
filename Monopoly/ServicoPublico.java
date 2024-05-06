@@ -5,8 +5,8 @@ public class ServicoPublico extends Propriedade {
         super();
     }
 
-    public ServicoPublico(String nome, int preco, int aluguel) {
-        super(nome, preco, aluguel);
+    public ServicoPublico(String descricao, String nome, int preco, int aluguel) {
+        super(descricao, nome, preco, aluguel);
     }
 
     public int calcularAluguel(int dados){
@@ -20,12 +20,15 @@ public class ServicoPublico extends Propriedade {
         Função recebe os dados do novo Serviço Público por meio do input
         e cria um novo Serviço Público e retorna ele.
          */
-        String nome;
+        String nome, descricao;
         int preco, aluguel;
         Scanner entrada = new Scanner(System.in);
         System.out.printf("--- Propriedade %d (Serviço Público) ---\n", getNum_propriedades() + 1);
         System.out.print("informe o nome: ");
         nome = entrada.nextLine();
+
+        System.out.print("informe a descrição: ");
+        descricao = entrada.nextLine();
 
         System.out.print("informe o preço: ");
         preco = entrada.nextInt();
@@ -33,7 +36,7 @@ public class ServicoPublico extends Propriedade {
         System.out.print("informe o aluguel: ");
         aluguel = entrada.nextInt();
 
-        ServicoPublico servicoPublico = new ServicoPublico(nome, preco, aluguel);
+        ServicoPublico servicoPublico = new ServicoPublico(descricao, nome, preco, aluguel);
         return servicoPublico;
     }
 }

@@ -1,38 +1,23 @@
-public class Propriedade {
+public class Propriedade extends Carta {
     private static int num_propriedades = 0;
-    private int id;
     private String nome;
-    private int proprietario;
-    private Jogador dono;
     private int preco;
     private int aluguel;
 
     public Propriedade() {
-        this.id = num_propriedades + 1;
+        super();
         this.nome = "";
-        this.proprietario = 0;
-        this.dono = null;
         this.preco = 0;
         this.aluguel = 0;
         num_propriedades ++;
     }
 
-    public Propriedade(String nome, int preco, int aluguel) {
-        this.id = num_propriedades + 1;
+    public Propriedade(String descricao, String nome, int preco, int aluguel) {
+        super(descricao);
         this.nome = nome;
-        this.proprietario = 0;
-        this.dono = null;
         this.preco = preco;
         this.aluguel = aluguel;
         num_propriedades ++;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -41,14 +26,6 @@ public class Propriedade {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getProprietario() {
-        return proprietario;
-    }
-
-    public void setProprietario(int propritario) {
-        this.proprietario = propritario;
     }
 
     public int getPreco() {
@@ -65,14 +42,6 @@ public class Propriedade {
 
     public void setAluguel(int aluguel) {
         this.aluguel = aluguel;
-    }
-
-    public Jogador getDono() {
-        return dono;
-    }
-
-    public void setDono(Jogador dono) {
-        this.dono = dono;
     }
 
     public static int getNum_propriedades() {

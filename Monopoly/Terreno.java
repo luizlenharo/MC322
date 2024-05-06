@@ -7,7 +7,7 @@ public class Terreno extends Propriedade {
     private int cor; //inteiro que define o conjunto que o terreno pertence
     private boolean hotel;
     private static Terreno [][] propriedadesCor = new Terreno[8][3];
-    //Cada coluna da matriz armazena as propriedades de mesma cor (definida pelo indice da coluna)
+    //Cada coluna da matriz armazena as propriedades de mesma cor (definida pelo indice da linha)
 
     public Terreno() {
         super();
@@ -18,8 +18,8 @@ public class Terreno extends Propriedade {
         this.hotel = false;
     }
 
-    public Terreno(String nome, int preco, int aluguel, int valorCasa, int valorHotel, int cor) {
-        super(nome, preco, aluguel);
+    public Terreno(String descricao, String nome, int preco, int aluguel, int valorCasa, int valorHotel, int cor) {
+        super(descricao, nome, preco, aluguel);
         this.numeroCasas = 0;
         this.valorCasa = valorCasa;
         this.valorHotel = valorHotel;
@@ -157,7 +157,7 @@ public class Terreno extends Propriedade {
         Jogador jogador;
         Terreno[] terrenosCor = propriedadesCor[cor - 1];  //Lista de todos os terrenos de mesma cor
         /* Verificando se nao tem hotel e se o jogador tem dinheiro
-         para comprar a casa.
+         para comprar o hotel.
         */
         if (hotel == true || comprador.getDinheiro() < valorHotel) {
             System.out.print("Compra falhou!\n");
@@ -188,12 +188,15 @@ public class Terreno extends Propriedade {
         Função que le os dados do terreno por meio do input e cria um novo Terreno
         com esses dados e retorna ele.
          */
-        String nome;
+        String nome, descricao;
         int preco, aluguel, valorCasa, valorHotel, cor;
         Scanner entrada = new Scanner(System.in);
         System.out.printf("--- Propriedade %d (Terreno) ---\n", getNum_propriedades() + 1);
         System.out.print("informe o nome: ");
         nome = entrada.nextLine();
+
+        System.out.print("informe a descrição: ");
+        descricao = entrada.nextLine();
 
         System.out.print("informe o preço: ");
         preco = entrada.nextInt();
@@ -210,7 +213,7 @@ public class Terreno extends Propriedade {
         System.out.print("informe a cor [1-6]: ");
         cor = entrada.nextInt();
 
-        Terreno terreno = new Terreno(nome, preco, aluguel, valorCasa, valorHotel, cor);
+        Terreno terreno = new Terreno(descricao, nome, preco, aluguel, valorCasa, valorHotel, cor);
         Terreno.addTerreno(terreno);
         return terreno;
     }

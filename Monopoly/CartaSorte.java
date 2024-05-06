@@ -1,33 +1,19 @@
-public class CartaSorte {
-    private int id;
-    private String descricao;
+public class CartaSorte extends Carta {
     private int movimento;
     private int efeito;
     private float valor;
     private String acao;
     private int tempo;
     private String restricao;
-    private static int num_cartasSorte = 0;
 
     public CartaSorte() {
-        this.id = num_cartasSorte + 1;
-        num_cartasSorte ++;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        super();
+        this.movimento = 0;
+        this.efeito = 0;
+        this.valor = 0;
+        this.acao = "";
+        this.tempo = 0;
+        this.restricao = "";
     }
 
     public int getMovimento() {
