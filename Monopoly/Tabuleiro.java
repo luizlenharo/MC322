@@ -1,8 +1,15 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ForkJoinPool;
 
-public class Tabuleiro {
+public class Tabuleiro implements Salvavel{
     private static Jogador jogadores[];
     private static Propriedade propriedades[];
+    private static ArrayList<String> acoes;
+    private static String arquivo = "acoes.txt";
+
 
     public Tabuleiro() {
         // Informações padrões do Monopoly
@@ -68,5 +75,24 @@ public class Tabuleiro {
         }
         Propriedade.setNum_propriedades(Propriedade.getNum_propriedades() - 1);
         return true;
+    }
+
+    public void salvaLog() {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(arquivo))) {
+            for (String acao: acoes) {
+                out.write(acao);
+                out.newLine();
+            }
+            out.flush();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void addAcaoLog(Carta carta, Jogador jogador, String string) {
+        switch (string) {
+            case "compraProp":
+                acoes.add("Jogador " + jogador.getNome() + " adquiriu a propriedade " + (Propriedade) carta);
+        }
     }
 }
